@@ -1340,7 +1340,7 @@ footer{
  <span class="custom">سفارشی</span>
 
  <button class="btn primary"
- onclick="showProduct('سلطنتی طلایی','gold')">
+ onclick="showProduct('سلطنتی طلایی','Card1.jpg')">
  مشاهده
  </button>
 </div>
@@ -1866,7 +1866,7 @@ font-size:9px;
 line-height:2;
 margin-top:12px">
 رمز پیش‌فرض این نسخه:
-<strong style="color:var(--gold2)">1234</strong>
+<strong style="color:var(--gold2)"></strong>
 </p>
 
 </div>
@@ -2198,7 +2198,38 @@ function filterProducts(category,btn){
 
 /* ================= PRODUCT ================= */
 
-function showProduct(name,color){
+function showProduct(name,image){
+
+ currentProduct=name;
+
+ document.getElementById("detailTitle").textContent=name;
+
+ document.getElementById("detailPreview").innerHTML=
+   <img
+     src="./${image}"
+     alt="${name}"
+     style="
+       width:100%;
+       max-width:400px;
+       max-height:500px;
+       object-fit:contain;
+       border-radius:12px;
+       box-shadow:0 20px 50px rgba(0,0,0,.4);
+     ">
+ ;
+
+ document.getElementById("addButton").onclick=function(){
+
+   addToCart(currentProduct);
+
+   closeModal("productModal");
+
+ };
+
+ document
+   .getElementById("productModal")
+   .classList.add("show");
+ }
 
  currentProduct=name;
 
@@ -2423,7 +2454,7 @@ function loginAdmin(){
  let pass=
  document.getElementById("adminPassword").value;
 
- if(pass==="1234"){
+ if(pass==="erfan8383"){
 
   document
   .getElementById("adminLogin")
