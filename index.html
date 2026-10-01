@@ -2978,51 +2978,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
             images.forEach((file, index) => {
 
+                const number = String(index + 1).padStart(2, "0");
+                const code = "VL-" + number;
+
                 const card = document.createElement("article");
 
                 card.className = "product";
 
                 card.innerHTML = `
+                    
                     <div class="preview">
+
                         <img
                             src="${file.download_url}"
-                            alt="نمونه کارت عروسی ${index + 1}"
+                            alt="کارت عروسی ${code}"
+                            loading="lazy"
                             style="
-                                width:68%;
+                                width:72%;
                                 aspect-ratio:3/4;
                                 object-fit:cover;
-                                border-radius:10px;
+                                border-radius:14px;
+                                box-shadow:0 15px 35px rgba(0,0,0,.35);
+                                display:block;
                             "
                         >
+
                     </div>
 
+
                     <div class="info">
-                        <h3>طرح شماره ${String(index + 1).padStart(2, "0")}</h3>
+
+                        <h3>
+                            طرح شماره ${number}
+                        </h3>
 
                         <div class="meta">
                             <span>VELLORA</span>
-                            <span>VL-${String(index + 1).padStart(2, "0")}</span>
+                            <span>${code}</span>
                         </div>
 
                         <div class="info-bottom">
-                            <span class="custom">سفارشی</span>
+
+                            <span class="custom">
+                                طراحی اختصاصی
+                            </span>
 
                             <button
                                 class="btn primary"
                                 onclick="openImage('${file.download_url}')">
                                 مشاهده
                             </button>
+
                         </div>
+
+
+                        <button
+                            onclick="orderDesign('${code}')"
+                            style="
+                                width:100%;
+                                margin-top:12px;
+                                padding:12px;
+                                border:0;
+                                border-radius:10px;
+                                background:linear-gradient(135deg,#d4af37,#f0d77a);
+                                color:#111;
+                                font-weight:bold;
+                                cursor:pointer;
+                                font-family:inherit;
+                            ">
+                            ثبت سفارش این طرح
+                        </button>
+
                     </div>
                 `;
 
                 products.appendChild(card);
+
             });
 
         })
         .catch(error => {
+
             console.error(error);
+
+            products.innerHTML = `
+                <div class="empty">
+                    خطا در بارگذاری تصاویر
+                </div>
+            `;
+
         });
+
 });
 
 
@@ -3034,7 +3080,7 @@ function openImage(url) {
         position:fixed;
         inset:0;
         z-index:99999;
-        background:rgba(0,0,0,.92);
+        background:rgba(0,0,0,.94);
         display:flex;
         align-items:center;
         justify-content:center;
@@ -3050,6 +3096,7 @@ function openImage(url) {
                 max-height:90vh;
                 object-fit:contain;
                 border-radius:15px;
+                box-shadow:0 20px 60px rgba(0,0,0,.6);
             "
         >
     `;
@@ -3060,8 +3107,26 @@ function openImage(url) {
 
     document.body.appendChild(modal);
 }
-</script>
 
+
+function orderDesign(code) {
+
+    const modelInput = document.getElementById("model");
+
+    if (modelInput) {
+        modelInput.value = code;
+    }
+
+    const orderSection = document.getElementById("order");
+
+    if (orderSection) {
+        orderSection.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+}
+</script>
 
 
 </body>
