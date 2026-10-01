@@ -3107,22 +3107,24 @@ function openImage(url) {
 
     document.body.appendChild(modal);
 }
+function orderDesign(code){
+  const modelInput = document.getElementById("model");
+
+  if(modelInput){
+    modelInput.value = code;
+  }
+
+  const orderSection = document.getElementById("order");
+
+  if(orderSection){
+    orderSection.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+}
 
 
-function orderDesign(code) {
-
-    const modelInput = document.getElementById("model");
-
-    if (modelInput) {
-        modelInput.value = code;
-    }
-
-    const orderSection = document.getElementById("order");
-
-    if (orderSection) {
-        orderSection.scrollIntoView({
-            behavior: "smooth"
-        });
     }
 
 }
