@@ -2198,13 +2198,13 @@ function filterProducts(category,btn){
 
 /* ================= PRODUCT ================= */
 
-function showProduct(name, image){
+function showProduct(name,image){
 
-  currentProduct = name;
+  currentProduct=name;
 
-  document.getElementById("detailTitle").textContent = name;
+  document.getElementById("detailTitle").textContent=name;
 
-  document.getElementById("detailPreview").innerHTML = 
+  document.getElementById("detailPreview").innerHTML=
     <img
       src="${image}"
       alt="${name}"
@@ -2218,7 +2218,7 @@ function showProduct(name, image){
       ">
   ;
 
-  document.getElementById("addButton").onclick = function(){
+  document.getElementById("addButton").onclick=function(){
 
     addToCart(currentProduct);
 
@@ -2229,9 +2229,8 @@ function showProduct(name, image){
   document
     .getElementById("productModal")
     .classList.add("show");
-}
 
- currentProduct=name;
+}
 
  document.getElementById("detailTitle").textContent=name;
 
