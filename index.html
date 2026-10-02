@@ -2198,38 +2198,38 @@ function filterProducts(category,btn){
 
 /* ================= PRODUCT ================= */
 
-function showProduct(name,image){
+function showProduct(name, image){
 
- currentProduct=name;
+  currentProduct = name;
 
- document.getElementById("detailTitle").textContent=name;
+  document.getElementById("detailTitle").textContent = name;
 
- document.getElementById("detailPreview").innerHTML=
-   <img
-     src="./${image}"
-     alt="${name}"
-     style="
-       width:100%;
-       max-width:400px;
-       max-height:500px;
-       object-fit:contain;
-       border-radius:12px;
-       box-shadow:0 20px 50px rgba(0,0,0,.4);
-     ">
- ;
+  document.getElementById("detailPreview").innerHTML = 
+    <img
+      src="${image}"
+      alt="${name}"
+      style="
+        width:100%;
+        max-width:400px;
+        max-height:500px;
+        object-fit:contain;
+        border-radius:12px;
+        box-shadow:0 20px 50px rgba(0,0,0,.4);
+      ">
+  ;
 
- document.getElementById("addButton").onclick=function(){
+  document.getElementById("addButton").onclick = function(){
 
-   addToCart(currentProduct);
+    addToCart(currentProduct);
 
-   closeModal("productModal");
+    closeModal("productModal");
 
- };
+  };
 
- document
-   .getElementById("productModal")
-   .classList.add("show");
- }
+  document
+    .getElementById("productModal")
+    .classList.add("show");
+}
 
  currentProduct=name;
 
